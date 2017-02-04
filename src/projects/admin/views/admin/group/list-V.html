@@ -1,0 +1,35 @@
+<table class="table table-striped b-t b-light">
+    <thead>
+    <tr>
+        <th style="width:20px;"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
+        <th>序号</th>
+        <th>组名称</th>
+        <th>用户数</th>
+        <th>组描述</th>
+        <th>设置组用户</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-if="!list.length">
+        <td colspan="9" style="text-align: center;">没有记录</td>
+    </tr>
+    <tr v-for="item in list" data-custom-id="{{item.group._id}}">
+        <td>
+            <label class="checkbox m-n i-checks">
+                <input value="{{item.group._id}}" type="checkbox" name="groupID"><i></i>
+            </label>
+        </td>
+        <td>{{item.group._id}}</td>
+        <td>{{item.group.name}}</td>
+        <td>{{item.count}}</td>
+        <td>{{item.group.text}}</td>
+        <td><a href="/admin/group/memberList?groupID={{item._id}}">设置组用户</a></td>
+        <td>
+            <a href="/admin/group/edit?_id={{item.group._id}}" class="btn btn-success btn-xs">编辑</a>
+            <a href="/admin/group/list-DelOne?groupID={{item.group._id}}" class="btn btn-dark btn-xs"
+               onclick="if(confirm('确定删除?')==false)return false;">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

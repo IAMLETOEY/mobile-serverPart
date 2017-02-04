@@ -1,0 +1,4 @@
+<select data-placeholder="请选择组长"  id="PlayInfoList" multiple name="leader"
+        data-required="true" class="form-control m-b chosen-select parsley-validated">
+    <option v-for="item in list"  v-bind:selected="oldLeader.indexOf(item._id) > -1"   value="{{item._id}}">{{item.name}}  </option>
+</select>

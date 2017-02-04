@@ -1,0 +1,22 @@
+<table class="table table-striped b-t b-light">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>公司名称</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-if="!list.length">
+        <td colspan="3" style="text-align: center;">没有记录</td>
+    </tr>
+    <tr v-for="item in list" data-custom-id="{{item._id}}">
+        <td>{{item._id}}</td>
+        <td>{{item.baseInfo.companyName}}</td>
+        <td>
+            <a href="/admin/company/edit?id={{item._id}}" class="btn btn-success btn-xs">编辑</a>
+            <a href="/admin/company/operate?delFlag=1&id={{item._id}}" class="btn btn-danger btn-xs">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

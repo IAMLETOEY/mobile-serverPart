@@ -1,0 +1,277 @@
+<% include ../../common/html-start.ejs %>
+<% include ../../common/head-start.ejs %>
+<!--可以添加自定义的样式或者脚本-->
+<link rel="stylesheet" href="/js/nestable/nestable.css" type="text/css"/>
+<% include ../../common/head-end.ejs %>
+
+<body class="">
+<section class="vbox">
+    <!-- 头部 S -->
+    <% include ../../common/header.ejs %>
+    <!-- 头部 E -->
+    <section>
+        <section class="hbox stretch">
+            <!-- 左边菜单栏 S -->
+            <% include ../../common/sidebar-admin.ejs %>
+            <!-- 左边菜单栏 E -->
+            <!-- 页面主体 S -->
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">
+                            <!-- 正文内容 S -->
+                            <section class="scrollable wrapper w-f-md">
+                                <ul class="breadcrumb">
+                                    <li><a href="#"><i class="fa fa-home"></i> 管理后台</a></li>
+                                    <li><a href="#"> 评判表管理</a></li>
+                                    <li class="active">新建评判表</li>
+                                </ul>
+
+                                <section class="panel panel-info">
+                                    <header class="panel-heading font-bold">
+                                        新建评判表
+                                        <a href="#" class="pull-right btn btn-primary btn-xs m-l">预览效果</a>
+                                    </header>
+                                    <div class="panel-body">
+                                        <form data-validate="parsley" action="/admin/option/create"
+                                              class="form-horizontal" method="post">
+                                            <input type="hidden" name="table">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    <span style="color:red">*</span>评判表名称
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input name="name" type="text" placeholder="评判表名称"
+                                                           class="form-control"
+                                                           data-require="true"
+                                                           data-error-message="评判表名称不能为空.">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="alert alert-warning">
+                                            <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+                                            操作说明 =>
+                                            <a class="btn-operate" data-type="group" href="javascript:;"><i
+                                                        class="m-l-xs fa fa-tag"></i> 添加分组</a>
+                                            <a class="btn-operate" data-type="text" href="javascript:;"><i
+                                                        class="m-l-xs fa fa-pencil"></i> 添加文本类型</a>
+                                            <a class="btn-operate" data-type="area" href="javascript:;"><i
+                                                        class="m-l-xs fa fa-gears "></i> 添加地区类型</a>
+                                            <a class="btn-operate" data-type="radio" href="javascript:;"><i
+                                                        class="m-l-xs fa fa-dot-circle-o "></i> 添加单项类型</a>
+                                            <a class="btn-operate" data-type="radioItem" href="javascript:;"><i
+                                                        class="m-l-xs fa fa-circle-o "></i> 添加选择项</a>
+                                            <a class="btn-operate" data-type="radioItemSub" href="javascript:;"><i
+                                                        class="m-l-xs fa fa-certificate "></i> 二级选择项</a>
+                                            <a class="btn-operate" data-type="delete" href="javascript:;"><i
+                                                        class="m-l-xs fa fa-times "></i> 删除</a>
+                                        </div>
+                                        <!-- 评判表操作 S -->
+                                        <div class="dd" style="max-width: none;" id="nestable">
+
+                                        </div>
+                                        <!-- 评判表操作 E -->
+                                        <div class="m-t">
+                                            <a href="/admin/option/list" class="btn btn-danger">取消</a>
+                                            <a id="btn_submit" href="javascript:;" class="btn btn-success">提交</a>
+                                        </div>
+                                    </div>
+                                </section>
+                            </section>
+                            <!-- 正文内容 E -->
+                            <!-- 页脚 S -->
+                            <% include ../../common/footer.ejs %>
+                            <!-- 页脚 E -->
+                        </section>
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                       data-target="#nav,html"></a>
+                </section>
+            </section>
+            <!-- 页面主体 E -->
+        </section>
+    </section>
+</section>
+<% include ../../common/script-start.ejs %>
+<!-- nestable -->
+<script src="/js/nestable/jquery.nestable.js"></script>
+<!-- parsley -->
+<script src="/js/parsley/parsley.min.js"></script>
+<script src="/js/parsley/parsley.extend.js"></script>
+<% include ../../common/script-end.ejs %>
+<script type="x-template" data-type="tmp_group">
+    <li class="dd-item dd3-item" data-type="group" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-tag"></i> 分组
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 60%; height: 20px; color:#000;">
+            <span class="pull-right">
+                <a class="btn-delete" href="javascript:;"><i class="fa fa-times fa-fw"></i></a>
+            </span>
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_text">
+    <li class="dd-item dd3-item" data-type="text" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-pencil"></i> 文本类型
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 60%; height: 20px; color:#000;">
+            <span class="pull-right">
+                <a class="btn-delete" href="javascript:;"><i class="fa fa-times fa-fw"></i></a>
+            </span>
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_radio">
+    <li class="dd-item dd3-item" data-type="radio" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-dot-circle-o"></i> 单项类型
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 60%; height: 20px; color:#000;">
+            <span class="pull-right">
+                <a class="btn-delete" href="javascript:;"><i class="fa fa-times fa-fw"></i></a>
+            </span>
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_area">
+    <li class="dd-item dd3-item" data-type="area" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-gears"></i> 地区类型
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 60%; height: 20px; color:#000;">
+            <span class="pull-right">
+                <a class="btn-delete" href="javascript:;"><i class="fa fa-times fa-fw"></i></a>
+            </span>
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_radioItem">
+    <li class="dd-item dd3-item" data-type="radioItem" data-title="" data-score="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-circle-o"></i> 选择项
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 50%; height: 20px; color:#000;">
+            <span class="m-l-xs">分值</span>
+            <input type="text" class="m-l-xs" data-type="score"
+                   style="width: 50px; height: 20px; color:#000;">
+            <span class="pull-right">
+                <a class="btn-delete" href="javascript:;"><i class="fa fa-times fa-fw"></i></a>
+            </span>
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_radioItemSub">
+    <li class="dd-item dd3-item" data-type="radioItemSub" data-title="" data-score="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-certificate"></i> 二级选择项
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 50%; height: 20px; color:#000;">
+            <span class="m-l-xs">分值</span>
+            <input type="text" class="m-l-xs" data-type="score"
+                   style="width: 50px; height: 20px; color:#000;">
+            <span class="pull-right">
+                <a class="btn-delete" href="javascript:;"><i class="fa fa-times fa-fw"></i></a>
+            </span>
+        </div>
+    </li>
+</script>
+<script>
+    $(function () {
+
+        var tmp = {
+            group: $('[data-type="tmp_group"]')[0].innerHTML,
+            text: $('[data-type="tmp_text"]')[0].innerHTML,
+            area: $('[data-type="tmp_area"]')[0].innerHTML,
+            radio: $('[data-type="tmp_radio"]')[0].innerHTML,
+            radioItem: $('[data-type="tmp_radioItem"]')[0].innerHTML,
+            radioItemSub: $('[data-type="tmp_radioItemSub"]')[0].innerHTML
+        };
+
+        var $nestable = $('#nestable');
+        $nestable.nestable({maxDepth: 5});
+        var nestable = $nestable.nestable('serialize');
+
+        $('.btn-operate').click(function () {
+            var type = $(this).data('type');
+            if (type == 'delete') {
+                return;
+            } else if (type == 'radioItem') {
+                var $radio = $nestable.find('.dd-item[data-type="radio"]:last');
+                if ($radio.length > 0) {
+                    insertItem($radio, type);
+                } else {
+                    alert('还没有添加单选类型');
+                }
+            } else if (type == 'radioItemSub') {
+                var $radioItem = $nestable.find('.dd-item[data-type="radioItem"]:last');
+                if ($radioItem.length > 0) {
+                    if($radioItem.find('[data-type="radio"]').length > 0){
+                        var $radio = $radioItem.find('[data-type="radio"]:last');
+                        insertItem($radio, type);
+                    }else {
+                        insertItem($radioItem, type);
+                    }
+                } else {
+                    alert('还没有添加选择项');
+                }
+            } else if (type == 'group') {
+                insertItem($nestable, type);
+            } else {
+                var $group = $nestable.find('.dd-item[data-type="group"]:last');
+                if ($group.length > 0) {
+                    insertItem($group, type);
+                } else {
+                    alert('还没有添加分组');
+                }
+            }
+        });
+
+        $nestable.on('click', '.btn-delete', function () {
+            var $item = $(this).parent().parent().parent();
+            $item.remove();
+        }).on('input', 'input', function () {
+            var type = $(this).data('type');
+            var value = $(this).val();
+            var $item = $(this).parent().parent();
+            $item.data(type, value);
+        }).on('change', function () {
+            nestable = $nestable.nestable('serialize');
+            console.log(JSON.stringify(nestable));
+        });
+
+        $('#btn_submit').click(function () {
+            nestable = $nestable.nestable('serialize');
+            $('input[name="table"]').val(JSON.stringify(nestable));
+            if (nestable.length > 0) {
+                $('form').submit();
+            } else {
+                alert('评判表不能为空!');
+            }
+        });
+
+        function insertItem($parent, type) {
+            if ($parent.children('.dd-list').length > 0) {
+                $parent.children('.dd-list').append(tmp[type]);
+            } else {
+                if(!$parent.hasClass('dd')){
+                    $parent.prepend('<button data-action="collapse" type="button">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>');
+                }
+                var $dom = $('<ol class="dd-list"></ol>').append(tmp[type]);
+                $parent.append($dom);
+            }
+            nestable = $nestable.nestable('serialize');
+        }
+
+    });
+</script>
+</body>
+
+<% include ../../common/html-end.ejs %>

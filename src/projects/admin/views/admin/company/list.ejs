@@ -1,0 +1,101 @@
+<% include ../../common/html-start.ejs %>
+<% include ../../common/head-start.ejs %>
+<!--可以添加自定义的样式或者脚本-->
+<% include ../../common/head-end.ejs %>
+
+<body class="">
+<section class="vbox">
+    <!-- 头部 S -->
+    <% include ../../common/header.ejs %>
+    <!-- 头部 E -->
+    <section>
+        <section class="hbox stretch">
+            <!-- 左边菜单栏 S -->
+            <% include ../../common/sidebar-admin.ejs %>
+            <!-- 左边菜单栏 E -->
+            <!-- 页面主体 S -->
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">
+                            <!-- 正文内容 S -->
+                            <section class="scrollable wrapper w-f-md">
+                                <ul class="breadcrumb">
+                                    <li><a href="#"><i class="fa fa-home"></i> 管理后台</a></li>
+                                    <li><a href="#"> 企业信息管理</a></li>
+                                    <li class="active">新建企业信息</li>
+                                </ul>
+
+                                <section class="panel panel-info">
+                                    <header class="panel-heading">
+                                        企业信息列表
+                                    </header>
+
+                                    <div class="row wrapper">
+                                        <div class="col-sm-12">
+                                            <a href="/admin/company/create"
+                                               class="btn btn-success">新建企业信息</a>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <%- table %>
+                                    </div>
+
+                                    <footer class="panel-footer">
+                                        <div class="row">
+                                            <div class="col-sm-4 hidden-xs">
+                                                <small class="text-muted inline m-t-sm m-b-sm">
+                                                    一共 <%= totalCount %> 条记录 - 共 <%= totalPages %> 页
+                                                </small>
+                                            </div>
+                                            <div class="col-sm-2 text-center">
+
+                                            </div>
+                                            <div class="col-sm-6 text-right text-center-xs">
+                                                <div id="pagination" style="margin: 0;"></div>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </section>
+                            </section>
+                            <!-- 正文内容 E -->
+                            <!-- 页脚 S -->
+                            <% include ../../common/footer.ejs %>
+                            <!-- 页脚 E -->
+                        </section>
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                       data-target="#nav,html"></a>
+                </section>
+            </section>
+            <!-- 页面主体 E -->
+        </section>
+    </section>
+</section>
+<% include ../../common/script-start.ejs %>
+<script src="/js/bootstrap-paginator.min.js"></script>
+<% include ../../common/script-end.ejs %>
+<script>
+    $(function () {
+        <% if ( totalCount > 0) { %>
+        $('#pagination').bootstrapPaginator({
+            currentPage: <%= currentPage %>,
+            totalPages: <%= totalPages %>,
+            numberOfPages: 7,
+            onPageClicked: function (e, originalEvent, type, page) {
+                e.stopImmediatePropagation();
+                var currentTarget = $(e.currentTarget);
+                var pages = currentTarget.bootstrapPaginator("getPages");
+                var current = pages.current;
+                if (page != current) {
+                    window.location = '/supplier/product/list?page=' + page;
+                }
+            }
+        });
+        $('#pagination').find('ul').addClass('pagination pagination-sm m-t-none m-b-none');
+        <% } %>
+    });
+</script>
+</body>
+
+<% include ../../common/html-end.ejs %>

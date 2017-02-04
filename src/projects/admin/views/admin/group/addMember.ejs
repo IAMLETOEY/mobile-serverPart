@@ -1,0 +1,131 @@
+<% include ../../common/html-start.ejs %>
+<% include ../../common/head-start.ejs %>
+<!--可以添加自定义的样式或者脚本-->
+<% include ../../common/head-end.ejs %>
+
+<body class="">
+<section class="vbox">
+    <!-- 头部 S -->
+    <% include ../../common/header.ejs %>
+    <!-- 头部 E -->
+    <section>
+        <section class="hbox stretch">
+            <!-- 左边菜单栏 S -->
+            <% include ../../common/sidebar-admin.ejs %>
+            <!-- 左边菜单栏 E -->
+            <!-- 页面主体 S -->
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">
+                            <!-- 正文内容 S -->
+                            <section class="scrollable padder-lg w-f-md" id="bjax-target">
+                                <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i
+                                            class="icon-refresh i-lg  inline" id="refresh"></i></a>
+                                <h2 class="font-thin m-b">系统管理</h2>
+
+                                <section class="panel panel-info">
+                                    <header class="panel-heading">
+                                        用户列表
+                                    </header>
+                                    <div class="panel-body">
+                                        <form id="multi-form" action="/admin/group/addMember" method="post">
+                                            <input type="hidden" name="groupID" value="<%= groupID %>">
+                                            <div class="row wrapper">
+                                                <div class="col-sm-12">
+                                                    <button type="submit"
+                                                            onclick="if(confirm('确定添加?')==false)return false;"
+                                                            class="btn btn-success">添加
+                                                    </button>
+                                                    <a id="multi-delete" href="/admin/group/list"
+                                                       class="btn btn-danger">返回</a>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <%- table %>
+                                            </div>
+                                        </form>
+                                        <footer class="panel-footer">
+                                            <div class="row">
+                                                <div class="col-sm-4 hidden-xs">
+                                                    <small class="text-muted inline m-t-sm m-b-sm">
+                                                        一共 <%= totalCount %> 条记录 - 共 <%= totalPages %> 页
+                                                    </small>
+                                                </div>
+                                                <div class="col-sm-2 text-center">
+
+                                                </div>
+                                                <div class="col-sm-6 text-right text-center-xs">
+                                                    <div id="pagination" style="margin: 0;"></div>
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </div>
+                                </section>
+                                <section class="panel panel-info">
+                                    <header class="panel-heading">
+                                        查找分组
+                                    </header>
+                                    <div class="panel-body">
+                                        <form id="multi-form" action="/admin/group/addMember"
+                                              method="get">
+                                            <input type="hidden" name="groupID" value="<%= groupID %>" >
+                                            <div class="form-group pull-in clearfix">
+                                                <div class="col-sm-6" style="width:25% ">
+                                                    <label style="margin-top: 5px">用户名称</label>
+                                                    <input type="text" class="form-control parsley-validated"
+                                                           name="name"
+                                                           placeholder="用户名">
+                                                </div>
+
+                                                <div class="col-sm-6" style="width:14% ">
+                                                    <label style="margin-top: 5px; opacity: 0;">查询</label>
+                                                    <button type="submit"
+                                                            class="btn btn-s-md btn-info form-control parsley-validated">
+                                                        查询
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </section>
+                            <!-- 正文内容 E -->
+                            <!-- 页脚 S -->
+                            <% include ../../common/footer.ejs %>
+                            <!-- 页脚 E -->
+                        </section>
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                       data-target="#nav,html"></a>
+                </section>
+            </section>
+            <!-- 页面主体 E -->
+        </section>
+    </section>
+</section>
+<% include ../../common/script-start.ejs %>
+<script src="/js/bootstrap-paginator.min.js"></script>
+<script>
+    <% if ( totalCount > 0) { %>
+    $('#pagination').bootstrapPaginator({
+        currentPage: <%= currentPage %>,
+        totalPages: <%= totalPages %>,
+        numberOfPages: 7,
+        onPageClicked: function (e, originalEvent, type, page) {
+            e.stopImmediatePropagation();
+            var currentTarget = $(e.currentTarget);
+            var pages = currentTarget.bootstrapPaginator("getPages");
+            var current = pages.current;
+            if (page != current) {
+                window.location = '/user/product/list?page=' + page;
+            }
+        }
+    });
+    $('#pagination').find('ul').addClass('pagination pagination-sm m-t-none m-b-none');
+    <% } %>
+</script>
+<% include ../../common/script-end.ejs %>
+</body>
+
+<% include ../../common/html-end.ejs %>

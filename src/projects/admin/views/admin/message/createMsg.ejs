@@ -1,0 +1,101 @@
+<% include ../../common/html-start.ejs %>
+<% include ../../common/head-start.ejs %>
+<!--可以添加自定义的样式或者脚本-->
+<link rel="stylesheet" href="/js/bootstrap-summernote/summernote.css" type="text/css"/>
+<% include ../../common/head-end.ejs %>
+
+<body class="">
+<section class="vbox">
+    <!-- 头部 S -->
+    <% include ../../common/header.ejs %>
+    <!-- 头部 E -->
+    <section>
+        <section class="hbox stretch">
+            <!-- 左边菜单栏 S -->
+            <% include ../../common/sidebar-admin.ejs %>
+            <!-- 左边菜单栏 E -->
+            <!-- 页面主体 S -->
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">
+                            <!-- 正文内容 S -->
+                            <section class="scrollable padder-lg w-f-md" id="bjax-target">
+                                <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i
+                                            class="icon-refresh i-lg  inline" id="refresh"></i></a>
+                                <h2 class="font-thin m-b">信息管理</h2>
+                                <section class="panel panel-info">
+                                    <header class="panel-heading font-bold">
+                                        通知消息发布
+                                    </header>
+                                    <div class="panel-body">
+                                        <form data-validate="parsley" action="/admin/message/create"
+                                              class="form-horizontal" method="post">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    <span style="color:red">*</span>标题
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input name="title" type="text" placeholder="标题"
+                                                           class="form-control" data-required="true"
+                                                           data-error-message="请输入标题">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    <span style="color:red">*</span>简介
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input name="briefIntr"  type="text" placeholder="简介"
+                                                           class="form-control" data-required="true"
+                                                           data-error-message="请输入简介">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    <span style="color:red">*</span>内容
+                                                </label>
+                                                <div class="col-sm-8">
+                                                     <textarea class="form-control"
+                                                               rows="6"
+                                                               name="content"
+                                                               data-required="true"
+                                                               data-error-message="请输入内容"
+                                                               placeholder="通知内容"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-4 col-sm-offset-2">
+                                                    <a href="/admin/user/list" class="btn btn-danger">取消</a>
+                                                    <button type="submit" class="btn btn-primary">提交</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </section>
+                            <!-- 正文内容 E -->
+                            <!-- 页脚 S -->
+                            <% include ../../common/footer.ejs %>
+                            <!-- 页脚 E -->
+                        </section>
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                       data-target="#nav,html"></a>
+                </section>
+            </section>
+            <!-- 页面主体 E -->
+        </section>
+    </section>
+</section>
+<% include ../../common/script-start.ejs %>
+<script src="/js/file-input/bootstrap-filestyle.min.js"></script>
+<!-- summernote -->
+<script src="/js/bootstrap-summernote/summernote.min.js"></script>
+<!-- parsley -->
+<script src="/js/parsley/parsley.min.js"></script>
+<script src="/js/parsley/parsley.extend.js"></script>
+<% include ../../common/script-end.ejs %>
+</body>
+
+<% include ../../common/html-end.ejs %>

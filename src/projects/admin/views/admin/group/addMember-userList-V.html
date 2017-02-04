@@ -1,0 +1,27 @@
+<table class="table table-striped b-t b-light">
+    <thead>
+    <tr>
+        <th style="width:20px;"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
+        <th>序号</th>
+        <th>登录名</th>
+        <th>姓名</th>
+        <th>用户类型</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-if="!list.length">
+        <td colspan="9" style="text-align: center;">没有记录</td>
+    </tr>
+    <tr v-for="item in list" data-custom-id="{{item.user._id}}">
+        <td>
+            <label class="checkbox m-n i-checks">
+                <input value="{{item.user._id}}" type="checkbox" name="member"><i></i>
+            </label>
+        </td>
+        <td>{{item.user._id}}</td>
+        <td>{{item.user.loginName}}</td>
+        <td>{{item.user.name}}</td>
+        <td>{{item.user.type == 1?'系统操作用户':'只查看用户'}}</td>
+    </tr>
+    </tbody>
+</table>

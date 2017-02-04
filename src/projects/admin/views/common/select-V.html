@@ -1,0 +1,4 @@
+<select name="{{name}}" class="form-control">
+    <option v-if="title" value="0">{{title}}</option>
+    <option v-for="item in list" value="{{item._id}}" v-bind:selected="active == item._id">{{item.name}}</option>
+</select>

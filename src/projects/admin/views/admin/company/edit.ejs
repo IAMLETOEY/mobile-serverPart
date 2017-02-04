@@ -1,0 +1,237 @@
+<% include ../../common/html-start.ejs %>
+<% include ../../common/head-start.ejs %>
+<!--可以添加自定义的样式或者脚本-->
+<link rel="stylesheet" href="/js/nestable/nestable.css" type="text/css"/>
+<% include ../../common/head-end.ejs %>
+
+<body class="">
+<section class="vbox">
+    <!-- 头部 S -->
+    <% include ../../common/header.ejs %>
+    <!-- 头部 E -->
+    <section>
+        <section class="hbox stretch">
+            <!-- 左边菜单栏 S -->
+            <% include ../../common/sidebar-admin.ejs %>
+            <!-- 左边菜单栏 E -->
+            <!-- 页面主体 S -->
+            <section id="content">
+                <section class="hbox stretch">
+                    <section>
+                        <section class="vbox">
+                            <!-- 正文内容 S -->
+                            <section class="scrollable wrapper w-f-md">
+                                <ul class="breadcrumb">
+                                    <li><a href="#"><i class="fa fa-home"></i> 管理后台</a></li>
+                                    <li><a href="#"> 评判表管理</a></li>
+                                    <li class="active">编辑评判表</li>
+                                </ul>
+
+                                <section class="panel panel-info">
+                                    <header class="panel-heading font-bold">
+                                        编辑评判表
+                                        <a href="" class="pull-right btn btn-primary btn-xs m-l">预览效果</a>
+                                    </header>
+                                    <div class="panel-body">
+                                        <form data-validate="parsley" action="/admin/company/edit"
+                                              class="form-horizontal" method="post">
+                                            <input type="hidden" name="id" value="<%= company._id %>">
+                                            <input type="hidden" name="option" value="<%= company.option %>">
+                                            <input type="hidden" name="table"
+                                                   value="<%= JSON.stringify(company.table) %>">
+                                        </form>
+                                        <!-- 评判表操作 S -->
+                                        <div class="dd" style="max-width: none;" id="nestable">
+
+                                        </div>
+                                        <!-- 评判表操作 E -->
+                                        <div class="m-t">
+                                            <a href="/admin/company/list" class="btn btn-danger">取消</a>
+                                            <a id="btn_submit" href="javascript:;" class="btn btn-success">提交</a>
+                                        </div>
+                                    </div>
+                                </section>
+                            </section>
+                            <!-- 正文内容 E -->
+                            <!-- 页脚 S -->
+                            <% include ../../common/footer.ejs %>
+                            <!-- 页脚 E -->
+                        </section>
+                    </section>
+                    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                       data-target="#nav,html"></a>
+                </section>
+            </section>
+            <!-- 页面主体 E -->
+        </section>
+    </section>
+</section>
+<% include ../../common/script-start.ejs %>
+<!-- nestable -->
+<script src="/js/nestable/jquery.nestable.js"></script>
+<!-- parsley -->
+<script src="/js/parsley/parsley.min.js"></script>
+<script src="/js/parsley/parsley.extend.js"></script>
+<% include ../../common/script-end.ejs %>
+<script type="x-template" data-type="tmp_group">
+    <li class="dd-item dd3-item" data-type="group" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <!-- 分组标题 -->
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_text">
+    <li class="dd-item dd3-item" data-type="text" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <span>
+                <!-- 文本框标题 -->
+            </span>
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 60%; height: 20px; color:#000;">
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_radio">
+    <li class="dd-item dd3-item" data-type="radio" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-dot-circle-o"></i> 单项类型
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 60%; height: 20px; color:#000;">
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_area">
+    <li class="dd-item dd3-item" data-type="area" data-title="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <span>
+                <!-- 地区标题 -->
+            </span>
+            <input type="text" class="m-l-xs" data-type="title"
+                   style="width: 60%; height: 20px; color:#000;">
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_radioItem">
+    <li class="dd-item dd3-item" data-type="radioItem" data-title="" data-score="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-circle-o"></i>
+            <span class="m-l-xs"></span>
+        </div>
+    </li>
+</script>
+<script type="x-template" data-type="tmp_radioItemSub">
+    <li class="dd-item dd3-item" data-type="radioItemSub" data-title="" data-score="">
+        <div class="dd-handle dd3-handle">Drag</div>
+        <div class="dd3-content">
+            <i class="fa fa-circle-o"></i>
+            <span class="m-l-xs"></span>
+        </div>
+    </li>
+</script>
+<script>
+    $(function () {
+
+        var $nestable = $('#nestable');
+
+        var tmp = {
+            group: $('[data-type="tmp_group"]')[0].innerHTML,
+            text: $('[data-type="tmp_text"]')[0].innerHTML,
+            area: $('[data-type="tmp_area"]')[0].innerHTML,
+            radio: $('[data-type="tmp_radio"]')[0].innerHTML,
+            radioItem: $('[data-type="tmp_radioItem"]')[0].innerHTML,
+            radioItemSub: $('[data-type="tmp_radioItemSub"]')[0].innerHTML
+        };
+
+        var table = JSON.parse($('input[name="table"]').val());
+        buildItem(table, $nestable);
+
+        function buildItem(list, $parent) {
+            if (list.length > 0) {
+                var $dom = $('<ol class="dd-list"></ol>');
+
+                $.each(list, function (index, item) {
+                    var $tmp = $(tmp[item.type]);
+                    $tmp.data('title', item.title);
+                    if (item.type == 'group') {
+                        $tmp.find('.dd3-content').html(item.title);
+                    } else if (item.type == 'text' || item.type == 'area') {
+                        $tmp.find('.dd3-content > span').html(item.title);
+                        $tmp.find('.dd3-content > input').val(item.value);
+                    } else if (item.type == 'radio') {
+                        $tmp.find('.dd3-content').html(item.title);
+                    } else if (item.type == 'radioItem') {
+                        $tmp.find('.dd3-content > span').html(item.title);
+                    } else if (item.type == 'radioItemSub') {
+                        $tmp.find('.dd3-content > span').html(item.title);
+                        $dom.hide();
+                    }
+
+                    if (item.children && item.children.length > 0) {
+                        buildItem(item.children, $tmp);
+                    }
+
+                    if (item.type == 'radio') {
+                        var $active = $tmp.find('.dd-list').eq(0).find('.dd-item').eq(item.value);
+                        $active.find('.fa-circle-o').eq(0).addClass('fa-dot-circle-o');
+                        $active.find('.dd-list').eq(0).show();
+                    }
+                    if (item.type == 'radioItem') {
+                        var $active = $tmp.find('.dd-list').eq(0).find('.dd-item').eq(item.value);
+                        $active.find('.fa-circle-o').eq(0).addClass('fa-dot-circle-o');
+                    }
+
+                    $dom.append($tmp);
+                    $parent.append($dom);
+                });
+            }
+        }
+
+        $nestable.on('click', '[data-type="radioItem"],[data-type="radioItemSub"]', function () {
+            $(this).find('.fa-circle-o').eq(0).addClass('fa-dot-circle-o');
+            $(this).siblings().find('.fa-circle-o').removeClass('fa-dot-circle-o');
+            $(this).find('.dd-list').eq(0).show();
+            $(this).siblings().find('.dd-list').hide();
+
+        });
+
+        $('#btn_submit').click(function () {
+            var nestable = findItem($nestable.find('.dd-list').eq(0));
+            $('input[name="table"]').val(JSON.stringify(nestable));
+            console.log($('input[name="table"]').val());
+//            return
+            if (nestable.length > 0) {
+                $('form').submit();
+            } else {
+                alert('评判表不能为空!');
+            }
+        });
+
+        function findItem($list) {
+            var _list = [];
+            $list.children('.dd-item').each(function () {
+                var item = {};
+                var $sub = $(this).children('.dd-list');
+                item.type = $(this).data('type');
+                item.title = $(this).data('title');
+                if (item.type == 'text' || item.type == 'area') {
+                    item.value = $(this).find('input').eq(0).val();
+                } else if (item.type == 'radio' || item.type == 'radioItem') {
+                    var $sub = $(this).children('.dd-list');
+                    if ($sub.length > 0) item.value = $sub.find('.fa-dot-circle-o').eq(0).closest('.dd-item').index();
+                }
+                if ($sub.length > 0) item.children = findItem($sub);
+                _list.push(item);
+            });
+            return _list;
+        }
+
+    });
+</script>
+</body>
+
+<% include ../../common/html-end.ejs %>

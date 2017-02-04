@@ -1,0 +1,33 @@
+<table class="table table-striped b-t b-light">
+    <thead>
+    <tr>
+        <th style="width:20px;"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
+        <th>标题</th>
+        <th>时间</th>
+        <th>简介</th>
+        <th>内容</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-if="!list.length">
+        <td colspan="9" style="text-align: center;">没有通知</td>
+    </tr>
+    <tr v-for="item in list" data-custom-id="{{item._id}}">
+        <td>
+            <label class="checkbox m-n i-checks">
+                <input value="{{item._id}}" type="checkbox" name="msgID"><i></i>
+            </label>
+        </td>
+
+        <td>{{item.title}}</td>
+        <td>{{item.addDate | transDate}}</td>
+        <td>{{item.briefIntr}}</td>
+        <td>{{item.content}}</td>
+        <td>
+            <a href="/admin/message/edit?id={{item._id}}" class="btn btn-success btn-xs">编辑</a>
+            <a  href="/admin/message/Del-one?id={{item._id}}" onclick="if(confirm('确定删除?') == false) return false;" class="btn btn-dark btn-xs">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
