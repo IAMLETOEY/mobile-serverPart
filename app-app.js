@@ -21,7 +21,7 @@ global.__root = __dirname;
 global.__host = 'http://112.74.80.83:30008';
 global._ = require('underscore');
 global.Promise = require('bluebird'); // 异步处理 promise
-global.ProjectName = 'shenghe'; // 配置项目名称
+global.ProjectName = 'mobile'; // 配置项目名称
 global.ProjectPath = '/src/projects/app'; // 配置项目路径, 新项目需要配置
 
 // 初始化程序

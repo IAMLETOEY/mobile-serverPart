@@ -20,7 +20,7 @@ module.exports = function (app) {
 
             var fs = require('fs');
             var dataBuffer = new Buffer(reqData.base64, 'base64');
-            console.log(dataBuffer)
+            console.log(dataBuffer);
             var path = '/upload/pic/' + fetchTradeNo() + '.jpg';
 
             try {

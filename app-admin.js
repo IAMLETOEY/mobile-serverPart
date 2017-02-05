@@ -21,7 +21,7 @@ global.__root = __dirname;
 global.__host = 'http://112.74.80.83:30008';
 global._ = require('underscore');
 global.Promise = require('bluebird'); // 异步处理 promise
-global.ProjectName = 'shenghe'; // 配置项目名称
+global.ProjectName = 'mobile'; // 配置项目名称
 global.ProjectPath = '/src/projects/admin'; // 配置项目路径, 新项目需要配置
 
 // 初始化程序
@@ -29,7 +29,7 @@ var app = express();
 
 // 数据库配置
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://' + ProjectName + ':shenghe2016@localhost:27017/' + ProjectName);
+mongoose.connect('mongodb://' + ProjectName + ':letoey@localhost:27017/' + ProjectName);
 var connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.once('open', function (callback) {

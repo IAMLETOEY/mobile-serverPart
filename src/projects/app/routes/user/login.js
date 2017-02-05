@@ -3,8 +3,7 @@ var auth = require(__root + '/src/commons/auth');
 var User = require(__root + '/src/models/User');
 
 module.exports = function (app) {
-    app.post('/app/user/login.do', function (req, res) {
-
+    app.post('/app/user/login', function (req, res) {
         try {
             var reqData = JSON.parse(req.body.data);
         } catch (e) {
