@@ -56,6 +56,5 @@ module.exports = function (app) {
             console.log('/app/user/login.do err:---->', err);
             res.send(resultCode['50000'], resultCode.type, 200);
         })
-
     });
 };
