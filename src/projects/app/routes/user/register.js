@@ -9,15 +9,15 @@ module.exports = function (app) {
             var phoneReg = /^1[0-9]{10}$/;
             var passwordReg = /^[a-zA-Z0-9]{6,15}$/;
             if (!phoneReg.test(reqData.account)) {
-                res.send(errorCode['50101'], errorCode.type, 200);
+                res.send(resultCode['50101'], resultCode.type, 200);
                 return;
             }
             if (!passwordReg.test(reqData.password)) {
-                res.send(errorCode['50101'], errorCode.type, 200);
+                res.send(resultCode['50101'], resultCode.type, 200);
             }
         } catch (e) {
             console.log(e);
-            res.send(errorCode['50000'], errorCode.type, 200);
+            res.send(resultCode['50000'], resultCode.type, 200);
             return;
         }
 
@@ -38,7 +38,7 @@ module.exports = function (app) {
                         type: parseInt(reqData.type)
                     })
                 } else {
-                    throw 'registerErr - 50100'
+                    throw 'RegisterErr - 50100'
                 }
             }).then(function (doc) {
                 var sessionID = req.sessionID;
@@ -70,10 +70,10 @@ module.exports = function (app) {
                 })
             }).catch(function (err) {
                 console.log(err);
-                // if (err.indexOf('RegistErr') > -1) {
-                //     res.send(resultCode[err.silce(-5)], resultCode.type, 200);
-                //     return;
-                // }
+                if (err.indexOf('RegisterErr') > -1) {
+                    res.send(resultCode[err.slice(-5)], resultCode.type, 200);
+                    return;
+                }
                 res.send(resultCode['50000'], resultCode.type, 200)
             })
         }
