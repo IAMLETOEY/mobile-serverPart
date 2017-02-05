@@ -1,15 +1,14 @@
 /**
- * 普通用户表
+ * 用户表
  */
 var UserSchema = mongoose.Schema({
     _id: {type: Number, required: true}, // id
-    account: {type: String, required: true}, // 用户登录名
+    account: {type: String, required: true}, // 用户登录名(电话)
     password: {type: String, required: true}, // 密码
-    phone: {type: Number, required: true}, //电话
     address: {type: String, required: true}, // 地址
     sex: {type: Number, default: 0}, //性别 0.男1.女
     avatar: {type: String, default: ''}, // 头像
-    nickname: {type: String, required: true}, //昵称
+    nickname: {type: String, default: ''}, //昵称
     idCard: {type: Number, required: true}, //身份证
     type: {type: Number, required: true}, // 1.普通用户2.评测机构
 

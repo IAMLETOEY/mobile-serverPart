@@ -27,19 +27,3 @@ Promise.promisifyAll(Group);
 Promise.promisifyAll(Group.prototype);
 
 module.exports = Group;
-
-Group.findOneAsync({
-    _id:0
-}).then(function (result) {
-    if(!result){
-        Group.createAsync({
-            _id:0,
-            name:"默认分组",
-            text:"默认分组",
-            leaderPower:[0],
-            memberPower:[0]
-        })
-    }
-}).catch(function (err) {
-    console.log('models/Group create err:---->', err);
-});

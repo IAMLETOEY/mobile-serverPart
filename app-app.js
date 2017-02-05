@@ -53,12 +53,12 @@ var rawBodySaver = function (req, res, buf, encoding) {
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
     extended: false,
-    limit: '50mb',
+    limit: '50mb'
     // verify: rawBodySaver
 }));
 // parse application/json
 app.use(bodyParser.json({
-    limit: '50mb',
+    limit: '50mb'
     // verify: rawBodySaver
 }));
 app.use(bodyParser.raw({
@@ -72,10 +72,10 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1 * 60 * 60 * 1000
+        maxAge: 60 * 60 * 1000
     },
     store: new RedisStore({
-        client: client,
+        client: client
     }),
     secret: 'keyboard cat'
 }));
@@ -119,5 +119,5 @@ if ('development' == app.get('env')) {
 }
 
 // 服务端口
-app.listen(30018);
+app.listen(30008);
 console.log('-> app start');
