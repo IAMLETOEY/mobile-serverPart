@@ -15,15 +15,16 @@ module.exports = function (app) {
 
             var update = {};
             if(reqData.nickName) update['nickName'] = reqData.nickName;
+            if(reqData.address) update['address'] = reqData.address;
 
             User.updateAsync({
                 _id: user._id,
                 delFlag: 2
             }, update).then(function (result) {
                 res.send(resultCode['200'], resultCode.type, 200);
-                console.log('/app/user/update.do suc:---->', result);
+                console.log('/user/update suc:---->', result);
             }).catch(function (err) {
-                console.log('/app/user/update.do err:---->', err);
+                console.log('/user/update err:---->', err);
                 res.send(resultCode['50000'], resultCode.type, 200);
             });
         });
