@@ -8,8 +8,8 @@ var auth = {
         client.keys('sessionID:' + req.body.sessionID, function (err, keys) {
             if (keys.length > 0) {
                 client.get('sessionID:' + req.body.sessionID, function (err, reply) {
-                    var userID = reply.toString();
-                    if (typeof(callback) == 'function') callback(userID);
+                    var user = JSON.parse(reply.toString());
+                    if (typeof(callback) == 'function') callback(user);
                 });
             } else {
                 res.send(errorCode['50002'], errorCode.type, 200);

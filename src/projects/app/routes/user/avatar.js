@@ -7,9 +7,9 @@ function fetchTradeNo() {
 }
 
 module.exports = function (app) {
-    app.post('/app/user/avatar.do', function (req, res) {
+    app.post('/user/avatar', function (req, res) {
 
-        auth.checkApp(req, res, function (user) {
+        auth.check(req, res, function (user) {
 
             try {
                 var reqData = JSON.parse(req.body.data);
@@ -26,7 +26,6 @@ module.exports = function (app) {
             try {
                 fs.writeFileSync(__root + path, dataBuffer);
             } catch (err) {
-                console.log('/app/user/avatar.do fs.writeFileSync err:---->', err);
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
@@ -52,6 +51,5 @@ module.exports = function (app) {
             });
 
         });
-
     });
 };
