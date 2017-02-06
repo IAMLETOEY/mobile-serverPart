@@ -16,7 +16,7 @@ module.exports = function (app) {
             password: reqData.password,
             delFlag: 2
         }, null, {
-            select: 'account nickname type avatar'
+            select: 'account nickName type avatar'
         }).then(function (_user) {
             if (_user) {
                 var redis = require('redis');

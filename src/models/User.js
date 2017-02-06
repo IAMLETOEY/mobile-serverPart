@@ -8,7 +8,7 @@ var UserSchema = mongoose.Schema({
     address: {type: String, required: true}, // 地址
     sex: {type: Number, default: 0}, //性别 0.男1.女
     avatar: {type: String, default: ''}, // 头像
-    nickname: {type: String, default: ''}, //昵称
+    nickName: {type: String, default: ''}, //昵称
     idCard: {type: Number, required: true}, //身份证
     type: {type: Number, required: true}, // 1.普通用户2.评测机构
 
