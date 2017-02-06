@@ -42,11 +42,10 @@ module.exports = function (app) {
                         avatar: path
                     }
                 };
-                console.log('/app/user/avatar.do suc:---->', result);
+                console.log('/user/avatar suc:---->', result);
                 res.send(resData, resultCode.type, 200);
             }).catch(function (err) {
-
-                console.log('/app/user/avatar.do err:---->', err);
+                console.log('/user/avatar err:---->', err);
                 res.send(resultCode['50000'], resultCode.type, 200);
             });
 
