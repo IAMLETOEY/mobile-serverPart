@@ -5,4 +5,6 @@ module.exports = function (app) {
     require('./user/info')(app);
     require('./user/update')(app);
     require('./user/avatar')(app);
+    //手机
+    require('./phone/add')(app);
 };

@@ -5,7 +5,7 @@ var User = require(__root + '/src/models/User');
 module.exports = function (app) {
     app.post('/user/update', function (req, res) {
 
-        auth.check(req, res, function(user) {
+        auth.check(req, res, function (user) {
             try {
                 var reqData = JSON.parse(req.body.data);
             } catch (e) {
@@ -14,8 +14,8 @@ module.exports = function (app) {
             }
 
             var update = {};
-            if(reqData.nickName) update['nickName'] = reqData.nickName;
-            if(reqData.address) update['address'] = reqData.address;
+            if (reqData.nickName) update['nickName'] = reqData.nickName;
+            if (reqData.address) update['address'] = reqData.address;
 
             User.updateAsync({
                 _id: user._id,

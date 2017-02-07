@@ -4,7 +4,7 @@ var User = require(__root + '/src/models/User');
 
 module.exports = function (app) {
     app.post('/user/info', function (req, res) {
-        auth.check(req, res, function(user) {
+        auth.check(req, res, function (user) {
             User.findOneAsync({
                 _id: user._id,
                 delFlag: 2
