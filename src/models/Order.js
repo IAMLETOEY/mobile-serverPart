@@ -2,7 +2,6 @@
  * 订单表
  */
 var OrderSchema = mongoose.Schema({
-    _id: {type: Number, required: true}, // id
     phone: {type: Number, require: true, ref: 'Phone'}, // 手机id
     price: {type: Number, default: 0}, // 价格
     address: {type: String, require: true}, //收货地址

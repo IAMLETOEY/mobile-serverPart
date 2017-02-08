@@ -2,7 +2,6 @@
  * 用户表
  */
 var UserSchema = mongoose.Schema({
-    _id: {type: Number, required: true}, // id
     account: {type: String, required: true}, // 用户登录名(电话)
     password: {type: String, required: true}, // 密码
     address: {type: String, required: true}, // 地址
