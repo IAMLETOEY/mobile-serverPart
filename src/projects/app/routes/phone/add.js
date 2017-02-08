@@ -17,14 +17,14 @@ module.exports = function (app) {
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
-            if(reqData.photo){
+            if (reqData.photo) {
                 var fs = require('fs');
                 var newPath = '/upload/pic/' + fetchTradeNo() + '.jpg';
-                fs.rename(reqData.photo,newPath,function (err) {
-                    if(err){
+                fs.rename(reqData.photo, newPath, function (err) {
+                    if (err) {
                         console.log('文件移动失败!');
                         throw 'PhoneErr - 50200';
-                    } else{
+                    } else {
                         postData()
                     }
                 }).catch(function (err) {
@@ -60,8 +60,6 @@ module.exports = function (app) {
                     res.send(resultCode['50000'], resultCode.type, 200);
                 });
             }
-
-
         })
     })
 };

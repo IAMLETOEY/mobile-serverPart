@@ -20,8 +20,8 @@ var PhoneSchema = mongoose.Schema({
 
     addDate: {type: Date, default: Date.now}, // 创建时间
     updDate: {type: Date, default: Date.now}, // 更新时间
-    addUser: {type: Number, ref: 'User'}, // 添加者
-    updUser: {type: Number, default: 0, ref: 'User'}, // 更新者
+    addUser: {type: Number}, // 添加者
+    updUser: {type: Number, default: 0}, // 更新者
     delFlag: {type: Number, default: 2} // 删除标志(1删除2未删除)
 });
 

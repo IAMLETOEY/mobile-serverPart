@@ -7,4 +7,6 @@ module.exports = function (app) {
     require('./user/avatar')(app);
     //手机
     require('./phone/add')(app);
+    require('./phone/list')(app);
+    require('./phone/detail')(app);
 };
