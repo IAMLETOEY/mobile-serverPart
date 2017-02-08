@@ -1,6 +1,7 @@
 var resultCode = require(__root + '/src/commons/resultCode');
 var auth = require(__root + '/src/commons/auth');
 var Phone = require(__root + '/src/models/Phone');
+var Comment = require(__root + '/src/models/Comment');
 
 module.exports = function (app) {
     app.post('/phone/detail', function (req, res) {
@@ -24,11 +25,35 @@ module.exports = function (app) {
                     model: 'User'
                 }
             };
-            Phone.findOneAsync(matchPhone, '', optionPhone).then(function (result) {
+            var matchComment = {
+                phone: reqData.phone,
+                delFlag: 2
+            };
+            var optionComment = {
+                populate: {
+                    path: 'response',
+                    select: 'nickName',
+                    model: 'User'
+                },
+                sort: '-addDate'
+            };
+            var task = [];
+            task.push(Phone.findOneAsync(matchPhone, '', optionPhone));
+            task.push(Comment.findAsync(matchComment, '', optionComment));
+            Promise.all(task).then(function (result) {
+                _.each(result[1], function (n, i) {
+                    if (n.response._id > 0) {
+                        n.content = '@' + n.response.nickName + '  ' + n.content
+                    }
+                });
+                console.log(result[1]);
                 var resData = {
                     code: 200,
                     msg: '查找成功',
-                    data: result
+                    data: {
+                        phone: result[0],
+                        comment: result[1]
+                    }
                 };
                 res.send(resData, resultCode.type, 200);
             }).catch(function (err) {

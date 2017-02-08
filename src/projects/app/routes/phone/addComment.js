@@ -1,6 +1,5 @@
 var resultCode = require(__root + '/src/commons/resultCode');
 var auth = require(__root + '/src/commons/auth');
-var Phone = require(__root + '/src/models/Phone');
 var Comment = require(__root + '/src/models/Comment');
 
 module.exports = function (app) {

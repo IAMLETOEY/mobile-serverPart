@@ -3,7 +3,7 @@
  */
 var CommentSchema = mongoose.Schema({
     phone: {type: Number, required: true}, // 手机ID
-    response: {type: Number}, // 回复对象，可为空，若有则为回复他人评论
+    response: {type: Number, default: 0}, // 回复对象，可为空，若有则为回复他人评论
     content: {type: String, default: ''}, //回复内容
 
     addDate: {type: Date, default: Date.now}, // 创建时间
