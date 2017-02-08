@@ -1,9 +1,10 @@
 var resultCode = require(__root + '/src/commons/resultCode');
 var auth = require(__root + '/src/commons/auth');
 var Phone = require(__root + '/src/models/Phone');
+var Comment = require(__root + '/src/models/Comment');
 
 module.exports = function (app) {
-    app.post('/phone/detail', function (req, res) {
+    app.post('/phone/addComment', function (req, res) {
         auth.check(req, res, function (user) {
             try {
                 var reqData = JSON.parse(req.body.data);
@@ -12,28 +13,22 @@ module.exports = function (app) {
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
-
-            var matchPhone = {
-                _id: reqData.phone,
-                delFlag: 2
-            };
-            var optionPhone = {
-                populate: {
-                    path: 'addUser',
-                    select: 'avatar nickName account',
-                    model: 'User'
-                }
-            };
-            Phone.findOneAsync(matchPhone, '', optionPhone).then(function (result) {
+            Comment.createAsync({
+                phone: reqData.phone,
+                addUser: user._id,
+                response: reqData.response ? reqData.response : 0,
+                content: reqData.content
+            }).then(function (result) {
+                console.log(result);
                 var resData = {
                     code: 200,
-                    msg: '查找成功',
+                    msg: '评论成功',
                     data: result
                 };
-                res.send(resData, resultCode.type, 200);
+                res.send(resData, resultCode.type, 200)
             }).catch(function (err) {
                 console.log(err);
-                res.send(resultCode['50000'], resultCode.type, 200);
+                res.send(resultCode['50000'], resultCode.type, 200)
             })
         })
     })

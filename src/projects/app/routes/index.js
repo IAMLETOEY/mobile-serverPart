@@ -9,4 +9,5 @@ module.exports = function (app) {
     require('./phone/add')(app);
     require('./phone/list')(app);
     require('./phone/detail')(app);
+    require('./phone/addComment')(app);
 };

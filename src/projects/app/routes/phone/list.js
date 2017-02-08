@@ -23,21 +23,21 @@ module.exports = function (app) {
                 limit: pageSize,
                 skip: pageSize * (searchPage - 1)
             };
-            Phone.findAsync(matchPhone,'',optionPhone).then(function (result) {
-                if(result.length > 0){
+            Phone.findAsync(matchPhone, '', optionPhone).then(function (result) {
+                if (result.length > 0) {
                     var resData = {
-                        code:200,
-                        msg:'查找成功',
-                        data:result
+                        code: 200,
+                        msg: '查找成功',
+                        data: result
                     }
                 } else {
                     var resData = {
-                        code:200,
-                        msg:'暂无商品',
-                        data:null
+                        code: 200,
+                        msg: '暂无商品',
+                        data: null
                     }
                 }
-                res.send(resData,resultCode.type, 200);
+                res.send(resData, resultCode.type, 200);
             }).catch(function (err) {
                 console.log(err);
                 res.send(resultCode['50000'], resultCode.type, 200);
