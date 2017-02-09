@@ -10,4 +10,7 @@ module.exports = function (app) {
     require('./phone/list')(app);
     require('./phone/detail')(app);
     require('./phone/addComment')(app);
+    require('./phone/addPhoto')(app);
+    //添加用
+    require('./addSomething/addPrice')(app)
 };

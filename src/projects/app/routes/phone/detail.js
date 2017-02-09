@@ -35,7 +35,7 @@ module.exports = function (app) {
                     select: 'nickName',
                     model: 'User'
                 },
-                sort: '-addDate'
+                sort: 'addDate'
             };
             var task = [];
             task.push(Phone.findOneAsync(matchPhone, '', optionPhone));
@@ -46,7 +46,6 @@ module.exports = function (app) {
                         n.content = '@' + n.response.nickName + '  ' + n.content
                     }
                 });
-                console.log(result[1]);
                 var resData = {
                     code: 200,
                     msg: '查找成功',
