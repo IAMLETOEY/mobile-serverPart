@@ -10,7 +10,7 @@ module.exports = function (app) {
             res.send(resultCode['50000'], resultCode.type, 200);
             return;
         }
-        Price.insertMany(reqData).then(function (result) {
+        Price.insertManyAsync(reqData).then(function (result) {
             var resData = {
                 code:200,
                 msg:'新建价格信息成功',

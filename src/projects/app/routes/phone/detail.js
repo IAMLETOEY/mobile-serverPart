@@ -5,7 +5,7 @@ var Comment = require(__root + '/src/models/Comment');
 
 module.exports = function (app) {
     app.post('/phone/detail', function (req, res) {
-        auth.check(req, res, function (user) {
+        auth.check(req, res, function () {
             try {
                 var reqData = JSON.parse(req.body.data);
             } catch (e) {
@@ -13,7 +13,6 @@ module.exports = function (app) {
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
-
             var matchPhone = {
                 _id: reqData.phone,
                 delFlag: 2
