@@ -66,7 +66,7 @@ module.exports = function (app) {
                             }
                         }
                     };
-                    res.send(resData, errorCode.type, 200);
+                    res.send(resData, resultCode.type, 200);
                 })
             }).catch(function (err) {
                 console.log(err);

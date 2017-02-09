@@ -37,7 +37,7 @@ module.exports = function (app) {
 
                 var resData = {
                     code: 200,
-                    msg: '查询成功',
+                    msg: '估价成功',
                     data: {
                         price:basePrice
                     }

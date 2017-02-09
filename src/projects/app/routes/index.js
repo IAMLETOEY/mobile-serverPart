@@ -12,6 +12,7 @@ module.exports = function (app) {
     require('./phone/addComment')(app);
     require('./phone/addPhoto')(app);
     require('./phone/imputedPrice')(app);
+    require('./phone/certifyPhone')(app);
     //添加用
     require('./addSomething/addPrice')(app)
 };
