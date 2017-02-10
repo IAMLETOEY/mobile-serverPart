@@ -39,7 +39,7 @@ module.exports = function (app) {
                     code: 200,
                     msg: '估价成功',
                     data: {
-                        price:basePrice
+                        price: basePrice
                     }
                 };
                 res.send(resData, resultCode.type, 200)

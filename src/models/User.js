@@ -10,6 +10,7 @@ var UserSchema = mongoose.Schema({
     nickName: {type: String, default: ''}, //昵称
     idCard: {type: Number, required: true}, //身份证
     type: {type: Number, required: true}, // 1.普通用户2.评测机构
+    money: {type: Number, default: 0}, //账户余额
 
     addDate: {type: Date, default: Date.now}, // 创建时间
     updDate: {type: Date, default: Date.now}, // 更新时间

@@ -11,9 +11,9 @@ module.exports = function (app) {
                 delFlag: 2
             }));
             task.push(Comment.findAsync({
-                object:user._id,
-                type:2,
-                delFlag:2
+                object: user._id,
+                type: 2,
+                delFlag: 2
             }));
             Promise.all(task).then(function (result) {
                 if (result) {
@@ -22,7 +22,7 @@ module.exports = function (app) {
                         msg: 'success',
                         data: {
                             UserInfo: result[0],
-                            comment:result[1]
+                            comment: result[1]
                         }
                     };
                     res.send(resData, resultCode.type, 200);

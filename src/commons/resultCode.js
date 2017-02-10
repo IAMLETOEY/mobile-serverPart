@@ -2,7 +2,7 @@
  * 结果码
  */
 var resultCode = {
-    'type': { 'Content-Type': 'application/json' },
+    'type': {'Content-Type': 'application/json'},
     // 成功, 返回空
     '200': {
         code: '200',
@@ -53,10 +53,20 @@ var resultCode = {
         msg: '通知不存在',
         data: null
     },
-    //公司管理
+    //订单相关
     '50300': {
         code: '50300',
-        msg: '找不到相应公司',
+        msg: '商品已经被购买!',
+        data: null
+    },
+    '50301': {
+        code: '50301',
+        msg: '商品价格错误!',
+        data: null
+    },
+    '50302': {
+        code: '50302',
+        msg: '创建订单失败!',
         data: null
     },
 };

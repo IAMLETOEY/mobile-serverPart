@@ -7,7 +7,6 @@ var OrderSchema = mongoose.Schema({
     address: {type: String, require: true}, //收货地址
     transport: {type: Number, default: 0}, // 快递单号
     photo: {type: [], default: []}, //寄件拍照
-    isCertified: {type: Number, default: 0}, //认证情况  0.未认证1.已认证
     status: {type: Number, default: 0}, //交易状态 0.未发货 1.已发货 2.已确认
 
     addDate: {type: Date, default: Date.now}, // 创建时间

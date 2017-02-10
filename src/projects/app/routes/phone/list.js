@@ -16,6 +16,7 @@ module.exports = function (app) {
             var pageSize = 10;
 
             var matchPhone = {
+                isPurchased:0,
                 delFlag: 2
             };
             var optionPhone = {

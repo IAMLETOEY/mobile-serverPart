@@ -15,6 +15,7 @@ var PhoneSchema = mongoose.Schema({
     failure: {type: String, default: ''}, //故障情况
     isCertified: {type: Number, default: 0}, //认证情况  0.未认证1.已认证
     imputedPrice: {type: Number, default: 0}, //估算价格
+    sellerPrice: {type: Number, require: true},//卖家报价
     isPurchased: {type: Number, default: 0}, // 是否已被购买 0.未被购买 1.已被购买
     photo: {type: String, default: ''},//手机图片
 
