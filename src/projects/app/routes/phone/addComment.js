@@ -13,13 +13,12 @@ module.exports = function (app) {
                 return;
             }
             Comment.createAsync({
-                phone: reqData.phone,
+                object: reqData.phone,
                 addUser: user._id,
                 response: reqData.response ? reqData.response : 0,
                 content: reqData.content,
-                type:1
+                type: 1
             }).then(function (result) {
-                console.log(result);
                 var resData = {
                     code: 200,
                     msg: '评论成功',

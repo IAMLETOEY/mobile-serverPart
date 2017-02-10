@@ -25,7 +25,8 @@ module.exports = function (app) {
                 }
             };
             var matchComment = {
-                phone: reqData.phone,
+                object: reqData.phone,
+                type:1,
                 delFlag: 2
             };
             var optionComment = {
