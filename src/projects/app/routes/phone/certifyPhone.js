@@ -42,7 +42,6 @@ module.exports = function (app) {
                     optionPhone['failure'] = reqData.failure
                 }
                 Phone.updateAsync(matchPhone, optionPhone).then(function (result) {
-                    console.log(result);
                     if (result.nModified = 1) {
                         var resData = {
                             code: 200,

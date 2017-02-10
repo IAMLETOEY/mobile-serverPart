@@ -23,6 +23,9 @@ module.exports = function (app) {
                 limit: pageSize,
                 skip: pageSize * (searchPage - 1)
             };
+            if (reqData.user) {
+                matchPhone['addUser'] = user._id
+            }
             Phone.findAsync(matchPhone, '', optionPhone).then(function (result) {
                 if (result.length > 0) {
                     var resData = {
