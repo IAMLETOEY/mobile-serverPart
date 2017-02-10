@@ -16,7 +16,8 @@ module.exports = function (app) {
                 phone: reqData.phone,
                 addUser: user._id,
                 response: reqData.response ? reqData.response : 0,
-                content: reqData.content
+                content: reqData.content,
+                type:1
             }).then(function (result) {
                 console.log(result);
                 var resData = {
