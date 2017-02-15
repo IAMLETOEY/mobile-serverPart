@@ -20,7 +20,6 @@ module.exports = function () {
             }).then(function (result) {
                 if (result.isPurchased == 0) {
                     if (result.sellerPrice == reqData.price) {
-                        //TODO:创建订单
                         var optionOrder = {
                             phone: reqData.phone,
                             price: reqData.price,

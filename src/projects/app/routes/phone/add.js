@@ -50,6 +50,7 @@ module.exports = function (app) {
                     maintenance: reqData.maintenance,
                     failure: reqData.failure,
                     imputedPrice: parseInt(reqData.imputedPrice),
+                    sellerPrice: parseInt(reqData.sellerPrice),
                     addUser: user._id,
                     photo: newPath
                 }).then(function (result) {
