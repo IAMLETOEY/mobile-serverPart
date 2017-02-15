@@ -18,7 +18,7 @@ module.exports = function (app) {
                 type: 2,
                 delFlag: 2
             }).then(function (result) {
-                if (result != null) {
+                if (result = null) {
                     return Comment.createAsync({
                         object: reqData.order,
                         content: reqData.content,
