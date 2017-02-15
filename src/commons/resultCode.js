@@ -50,7 +50,17 @@ var resultCode = {
     },
     '50201': {
         code: '50201',
-        msg: '通知不存在',
+        msg: '通知不存在!',
+        data: null
+    },
+    '50202': {
+        code: '50202',
+        msg: '手机已经被购买!',
+        data: null
+    },
+    '50203': {
+        code: '50203',
+        msg: '手机修改失败!',
         data: null
     },
     //订单相关
@@ -68,7 +78,7 @@ var resultCode = {
         code: '50302',
         msg: '创建订单失败!',
         data: null
-    },
+    }
 };
 
 module.exports = resultCode;
