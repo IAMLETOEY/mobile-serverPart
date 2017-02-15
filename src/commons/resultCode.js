@@ -78,7 +78,13 @@ var resultCode = {
         code: '50302',
         msg: '创建订单失败!',
         data: null
-    }
+    },
+    '50303': {
+        code: '50303',
+        msg: '已经评论过该用户!',
+        data: null
+    },
+
 };
 
 module.exports = resultCode;

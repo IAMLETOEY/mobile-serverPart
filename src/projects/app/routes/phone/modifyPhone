@@ -80,7 +80,7 @@ module.exports = function (app) {
                 }
             }).catch(function (err) {
                 console.log(err);
-                if (err.indexOf('PhoneErr') > -1) {
+                if (err.indexOf('modifyPhoneErr') > -1) {
                     res.send(resultCode[err.slice(-5)], resultCode.type, 200);
                     return;
                 }

@@ -14,6 +14,9 @@ module.exports = function (app) {
     require('./phone/imputedPrice')(app);
     require('./phone/certifyPhone')(app);
     require('./phone/modifyPhone')(app);
+    //订单相关
+    require('./order/buyPhone');
+    require('./order/userComment');
     //添加用
     require('./addSomething/addPrice')(app)
 };
