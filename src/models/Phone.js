@@ -8,16 +8,16 @@ var PhoneSchema = mongoose.Schema({
     net: {type: String, default: ''}, //网络制式
     color: {type: String, default: ''}, // 颜色
     buyChannel: {type: String, default: ''}, //购买渠道
-    warranty: {type: String, default: ''}, //保修情况
-    border: {type: String, default: ''}, //边框情况
-    screen: {type: String, default: ''}, // 屏幕情况
-    maintenance: {type: String, default: ''}, //维修情况
+    warranty: {type: Number, default: ''}, //保修情况, 1处于保修期 2.超过保修期
+    border: {type: Number, default: ''}, //边框情况
+    screen: {type: Number, default: ''}, // 屏幕情况
+    maintenance: {type: Number, default: ''}, //维修情况
     failure: {type: String, default: ''}, //故障情况
     isCertified: {type: Number, default: 0}, //认证情况  0.未认证1.已认证
     imputedPrice: {type: Number, default: 0}, //估算价格
     sellerPrice: {type: Number, require: true},//卖家报价
     isPurchased: {type: Number, default: 0}, // 是否已被购买 0.未被购买 1.已被购买
-    photo: {type: String, default: ''},//手机图片
+    photo: {type: [String], default: ''},//手机图片
 
     addDate: {type: Date, default: Date.now}, // 创建时间
     updDate: {type: Date, default: Date.now}, // 更新时间
