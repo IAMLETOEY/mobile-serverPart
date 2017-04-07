@@ -4,7 +4,7 @@ var User = require(__root + '/src/models/User');
 var Phone = require(__root + '/src/models/Phone');
 var Order = require(__root + '/src/models/Order');
 
-module.exports = function () {
+module.exports = function (app) {
     app.post('/order/buyPhone', function (req, res) {
         auth.check(req, res, function (user) {
             try {
@@ -43,8 +43,6 @@ module.exports = function () {
                     throw 'OrderErr - 50300';
                 }
             }).then(function (result) {
-                console.log(result[0]);
-                console.log(result[1]);
                 if (result.length == 2) {
                     var resData = {
                         code: 200,

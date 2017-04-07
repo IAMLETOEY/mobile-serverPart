@@ -15,8 +15,8 @@ module.exports = function (app) {
     require('./phone/certifyPhone')(app);
     require('./phone/modifyPhone')(app);
     //订单相关
-    require('./order/buyPhone');
-    require('./order/userComment');
+    require('./order/buyPhone')(app);
+    require('./order/userComment')(app);
     //添加用
     require('./addSomething/addPrice')(app)
 };
