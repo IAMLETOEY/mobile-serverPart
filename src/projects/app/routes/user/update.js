@@ -15,6 +15,7 @@ module.exports = function (app) {
 
             var update = {};
             if (reqData.nickName) update['nickName'] = reqData.nickName;
+            if (reqData.idCard) update['idCard'] = reqData.idCard;
             if (reqData.address) update['address'] = reqData.address;
 
             User.updateAsync({

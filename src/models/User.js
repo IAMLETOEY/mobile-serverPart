@@ -5,11 +5,10 @@ var UserSchema = mongoose.Schema({
     account: {type: String, required: true}, // 用户登录名(电话)
     password: {type: String, required: true}, // 密码
     address: {type: String, required: true}, // 地址
-    sex: {type: Number, default: 0}, //性别 0.男1.女
     avatar: {type: String, default: ''}, // 头像
     nickName: {type: String, default: ''}, //昵称
     idCard: {type: Number, required: true}, //身份证
-    type: {type: Number, required: true}, // 1.普通用户2.评测机构
+    type: {type: Number, default: 1}, // 1.普通用户2.评测机构
     money: {type: Number, default: 0}, //账户余额
 
     addDate: {type: Date, default: Date.now}, // 创建时间

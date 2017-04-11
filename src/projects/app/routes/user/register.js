@@ -32,10 +32,8 @@ module.exports = function (app) {
                         account: reqData.account,
                         password: reqData.password,
                         address: reqData.address,
-                        sex: reqData.sex,
                         nickName: reqData.nickName,
-                        idCard: parseInt(reqData.idCard),
-                        type: parseInt(reqData.type)
+                        idCard: parseInt(reqData.idCard)
                     })
                 } else {
                     throw 'RegisterErr - 50100'
