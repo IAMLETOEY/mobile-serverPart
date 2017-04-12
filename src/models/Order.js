@@ -8,7 +8,7 @@ var OrderSchema = mongoose.Schema({
     receiver: { type: String }, //收货人
     receiverPhone: { type: Number }, //收货人手机号
     transport: { type: Number, default: 0 }, // 快递单号
-    photo: { type: [], default: [] }, //寄件拍照
+    photo: { type: String, default: '' }, //寄件拍照
     status: { type: Number, default: 0 }, //交易状态 0.未发货 1.已发货 2.已确认
 
     addDate: { type: Date, default: Date.now }, // 创建时间

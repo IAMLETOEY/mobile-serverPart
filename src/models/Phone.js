@@ -18,7 +18,7 @@ var PhoneSchema = mongoose.Schema({
     sellerPrice: {type: Number, default:0},//卖家报价
     isPost: {type: Number, default:0}, // 是否已经发布 0.未发布 1.已经发布
     isPurchased: {type: Number, default: 0}, // 是否已被购买 0.未被购买 1.已被购买
-    photo: {type: [String], default: ''},//手机图片
+    photo: {type: String, default: ''},//手机图片
 
     addDate: {type: Date, default: Date.now}, // 创建时间
     updDate: {type: Date, default: Date.now}, // 更新时间

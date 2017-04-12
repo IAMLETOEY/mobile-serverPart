@@ -14,9 +14,12 @@ module.exports = function (app) {
     require('./phone/imputedPrice')(app);
     require('./phone/certifyPhone')(app);
     require('./phone/modifyPhone')(app);
+    require('./phone/addPhonePicture')(app);
+    require('./phone/getPhone')(app);
     //订单相关
     require('./order/buyPhone')(app);
     require('./order/userComment')(app);
+    require('./order/addOrderPicture')(app);
     //添加用
     require('./addSomething/addPrice')(app)
 };

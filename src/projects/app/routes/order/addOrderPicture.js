@@ -1,13 +1,13 @@
 var resultCode = require(__root + '/src/commons/resultCode');
 var auth = require(__root + '/src/commons/auth');
-var User = require(__root + '/src/models/User');
+var Order = require(__root + '/src/models/Order');
 
 function fetchTradeNo() {
     return ('' + (new Date().getTime())).slice(0, 10);
 }
 
 module.exports = function (app) {
-    app.post('/user/avatar', function (req, res) {
+    app.post('/order/addOrderPicture', function (req, res) {
         auth.check(req, res, function (user) {
             try {
                 var reqData = JSON.parse(req.body.data);
@@ -19,7 +19,7 @@ module.exports = function (app) {
             var fs = require('fs');
             var dataBuffer = new Buffer(reqData.base64, 'base64');
             console.log(dataBuffer);
-            var path = '/upload/pic/avatar/' + fetchTradeNo() + '.jpg';
+            var path = '/upload/pic/order/' + fetchTradeNo() + '.jpg';
 
             try {
                 fs.writeFileSync(__root + path, dataBuffer);
@@ -27,23 +27,22 @@ module.exports = function (app) {
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
-
-            User.updateAsync({
-                _id: user._id
-            }, {
-                avatar: path
+            Order.updateAsync({_id: reqData._id}, {
+                $set: {
+                    photo: path
+                }
             }).then(function (result) {
                 var resData = {
                     code: '200',
                     msg: 'success',
                     data: {
-                        avatar: path
+                        picture: path
                     }
                 };
-                console.log('/user/avatar suc:---->', result);
+                console.log('/phone/addPicture suc:---->', result);
                 res.send(resData, resultCode.type, 200);
             }).catch(function (err) {
-                console.log('/user/avatar err:---->', err);
+                console.log('/phone/addPicture err:---->', err);
                 res.send(resultCode['50000'], resultCode.type, 200);
             });
 

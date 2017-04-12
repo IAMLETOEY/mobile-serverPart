@@ -16,7 +16,7 @@ module.exports = function (app) {
             var totalPrice = 0;
             var basePrice = 0;
             Price.findOneAsync({
-                model: reqData.model,
+                model: reqData.model+reqData.modelName,
                 delFlag: 2
             }).then(function (result) {
                 if (!result) {
@@ -88,7 +88,8 @@ module.exports = function (app) {
                     screen: reqData.screen, // 屏幕情况
                     maintenance: reqData.maintenance, //维修情况
                     failure: reqData.other, //故障情况
-                    imputedPrice: totalPrice //估算价格
+                    imputedPrice: totalPrice, //估算价格
+                    addUser: user._id
                 });
             }).then(function (phone) {
                 var resData = {

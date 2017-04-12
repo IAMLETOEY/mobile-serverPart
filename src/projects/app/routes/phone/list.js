@@ -12,17 +12,13 @@ module.exports = function (app) {
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
-            var searchPage = reqData.page || 1;
-            var pageSize = 10;
 
             var matchPhone = {
-                isPurchased:0,
+                isPost:1,
                 delFlag: 2
             };
             var optionPhone = {
-                sort: '-addDate',
-                limit: pageSize,
-                skip: pageSize * (searchPage - 1)
+                sort: '-addDate'
             };
             if (reqData.user) {
                 matchPhone['addUser'] = user._id
@@ -33,7 +29,7 @@ module.exports = function (app) {
                         code: 200,
                         msg: '查找成功',
                         data: result
-                    }
+                    };
                 } else {
                     var resData = {
                         code: 200,
@@ -41,6 +37,7 @@ module.exports = function (app) {
                         data: null
                     }
                 }
+                console.log(resData);
                 res.send(resData, resultCode.type, 200);
             }).catch(function (err) {
                 console.log(err);
