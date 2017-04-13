@@ -18,7 +18,6 @@ module.exports = function (app) {
 
             var fs = require('fs');
             var dataBuffer = new Buffer(reqData.base64, 'base64');
-            console.log(dataBuffer);
             var path = '/upload/pic/order/' + fetchTradeNo() + '.jpg';
 
             try {
@@ -27,7 +26,7 @@ module.exports = function (app) {
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
-            Order.updateAsync({_id: reqData._id}, {
+            Order.updateAsync({phone: reqData.phoneID}, {
                 $set: {
                     photo: path
                 }

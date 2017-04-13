@@ -8,9 +8,8 @@ module.exports = function (app) {
     //手机
     require('./phone/add')(app);
     require('./phone/list')(app);
-    require('./phone/detail')(app);
     require('./phone/addComment')(app);
-    require('./phone/addPhoto')(app);
+    require('./phone/getComment')(app);
     require('./phone/imputedPrice')(app);
     require('./phone/certifyPhone')(app);
     require('./phone/modifyPhone')(app);
@@ -20,6 +19,8 @@ module.exports = function (app) {
     require('./order/buyPhone')(app);
     require('./order/userComment')(app);
     require('./order/addOrderPicture')(app);
+    require('./order/getOrderList')(app);
+    require('./order/receivePhone')(app);
     //添加用
     require('./addSomething/addPrice')(app)
 };

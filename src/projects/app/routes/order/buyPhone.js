@@ -19,26 +19,25 @@ module.exports = function (app) {
                 delFlag: 2
             }).then(function (result) {
                 if (result.isPurchased == 0) {
-                    if (result.sellerPrice == reqData.price) {
-                        var optionOrder = {
-                            phone: reqData.phone,
-                            price: reqData.price,
-                            address: reqData.address,
-                            addUser: user._id
-                        };
-                        var matchPhone = {
-                            _id: reqData.phone
-                        };
-                        var optionPhone = {
-                            isPurchased: 1
-                        };
-                        var task = [];
-                        task.push(Order.createAsync(optionOrder));
-                        task.push(Phone.updateAsync(matchPhone, optionPhone));
-                        return Promise.all(task);
-                    } else {
-                        throw 'OrderErr - 50301';
-                    }
+                    var optionOrder = {
+                        phone: reqData.phone,
+                        price: result.sellerPrice,
+                        address: reqData.address,
+                        receiver: reqData.receiver,
+                        receiverPhone: reqData.receiverPhone,
+                        seller: result.addUser,
+                        addUser: user._id
+                    };
+                    var matchPhone = {
+                        _id: reqData.phone
+                    };
+                    var optionPhone = {
+                        isPurchased: 1
+                    };
+                    var task = [];
+                    task.push(Order.createAsync(optionOrder));
+                    task.push(Phone.updateAsync(matchPhone, optionPhone));
+                    return Promise.all(task);
                 } else {
                     throw 'OrderErr - 50300';
                 }
@@ -47,7 +46,7 @@ module.exports = function (app) {
                     var resData = {
                         code: 200,
                         msg: '购买成功!',
-                        data: result[1]
+                        data: result[0]
                     };
                     res.send(resData, resultCode.type, 200)
                 } else {

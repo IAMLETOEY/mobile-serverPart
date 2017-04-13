@@ -60,7 +60,6 @@ module.exports = function (app) {
                 }
                 return Phone.updateAsync(matchPhone, optionPhone)
             }).then(function (result) {
-                console.log(result);
                 if (result.nModified = 1) {
                     var resData = {};
                     if (modifyFlag) {

@@ -20,7 +20,6 @@ module.exports = function (app) {
             res.send(resultCode['50000'], resultCode.type, 200);
             return;
         }
-
         function createUser(reqData) {
             //检查account是否存在
             User.findOneAsync({

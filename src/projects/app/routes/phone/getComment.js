@@ -1,10 +1,9 @@
 var resultCode = require(__root + '/src/commons/resultCode');
 var auth = require(__root + '/src/commons/auth');
-var Phone = require(__root + '/src/models/Phone');
 var Comment = require(__root + '/src/models/Comment');
 
 module.exports = function (app) {
-    app.post('/phone/detail', function (req, res) {
+    app.post('/phone/getComment', function (req, res) {
         auth.check(req, res, function () {
             try {
                 var reqData = JSON.parse(req.body.data);
@@ -13,17 +12,6 @@ module.exports = function (app) {
                 res.send(resultCode['50000'], resultCode.type, 200);
                 return;
             }
-            var matchPhone = {
-                _id: reqData.phone,
-                delFlag: 2
-            };
-            var optionPhone = {
-                populate: {
-                    path: 'addUser',
-                    select: 'avatar nickName account',
-                    model: 'User'
-                }
-            };
             var matchComment = {
                 object: reqData.phone,
                 type: 1,
@@ -31,28 +19,23 @@ module.exports = function (app) {
             };
             var optionComment = {
                 populate: {
-                    path: 'response',
+                    path: 'response addUser',
                     select: 'nickName',
                     model: 'User'
                 },
                 sort: 'addDate'
             };
-            var task = [];
-            task.push(Phone.findOneAsync(matchPhone, '', optionPhone));
-            task.push(Comment.findAsync(matchComment, '', optionComment));
-            Promise.all(task).then(function (result) {
-                _.each(result[1], function (n, i) {
-                    if (n.response._id > 0) {
+            Comment.findAsync(matchComment, '', optionComment).then(function (result) {
+                var commentList = result;
+                _.each(commentList, function (n, i) {
+                    if (n.response && n.response._id > 0) {
                         n.content = '@' + n.response.nickName + '  ' + n.content
                     }
                 });
                 var resData = {
                     code: 200,
                     msg: '查找成功',
-                    data: {
-                        phone: result[0],
-                        comment: result[1]
-                    }
+                    data: commentList
                 };
                 res.send(resData, resultCode.type, 200);
             }).catch(function (err) {

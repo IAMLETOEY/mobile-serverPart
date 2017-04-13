@@ -37,7 +37,6 @@ module.exports = function (app) {
                         data: null
                     }
                 }
-                console.log(resData);
                 res.send(resData, resultCode.type, 200);
             }).catch(function (err) {
                 console.log(err);
