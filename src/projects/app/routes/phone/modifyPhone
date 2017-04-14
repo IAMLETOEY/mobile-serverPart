@@ -34,9 +34,7 @@ module.exports = function (app) {
                 if (reqData.sellerPrice) {
                     optionPhone['sellerPrice'] = reqData.sellerPrice
                 }
-                if (reqData.isPost) {
-                    optionPhone['isPost'] = reqData.isPost
-                }
+
                 //若审核通过则不能修改
                 if (modifyFlag) {
                     if (reqData.buyChannel) {
@@ -56,6 +54,12 @@ module.exports = function (app) {
                     }
                     if (reqData.failure) {
                         optionPhone['failure'] = reqData.failure
+                    }
+                    if (reqData.requireCertified) {
+                        optionPhone['requireCertified'] = reqData.requireCertified
+                    }
+                    if (reqData.isPost) {
+                        optionPhone['isPost'] = reqData.isPost
                     }
                 }
                 return Phone.updateAsync(matchPhone, optionPhone)

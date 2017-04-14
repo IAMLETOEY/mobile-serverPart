@@ -7,7 +7,7 @@ var UserSchema = mongoose.Schema({
     address: {type: String, required: true}, // 地址
     avatar: {type: String, default: ''}, // 头像
     nickName: {type: String, default: ''}, //昵称
-    idCard: {type: Number, required: true}, //身份证
+    idCard: {type: String, required: true}, //身份证
     type: {type: Number, default: 1}, // 1.普通用户2.评测机构
     money: {type: Number, default: 0}, //账户余额
 

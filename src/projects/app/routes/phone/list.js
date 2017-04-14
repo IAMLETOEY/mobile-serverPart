@@ -23,6 +23,9 @@ module.exports = function (app) {
             if (reqData.user) {
                 matchPhone['addUser'] = user._id
             }
+            if(reqData.isCertified){
+                matchPhone['requireCertified'] = 1
+            }
             Phone.findAsync(matchPhone, '', optionPhone).then(function (result) {
                 if (result.length > 0) {
                     var resData = {

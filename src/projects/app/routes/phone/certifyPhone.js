@@ -21,10 +21,12 @@ module.exports = function (app) {
                 };
                 var optionPhone = {
                     updUser: user._id,
-                    isCertified: 1
+                    isCertified: 1,
+                    requireCertified: 0
                 };
-                if (reqData.imputedPrice) {
-                    optionPhone['imputedPrice'] = reqData.imputedPrice
+
+                if (reqData.buyChannel) {
+                    optionPhone['buyChannel'] = reqData.buyChannel
                 }
                 if (reqData.warranty) {
                     optionPhone['warranty'] = reqData.warranty
@@ -40,6 +42,12 @@ module.exports = function (app) {
                 }
                 if (reqData.failure) {
                     optionPhone['failure'] = reqData.failure
+                }
+                if (reqData.requireCertified) {
+                    optionPhone['requireCertified'] = reqData.requireCertified
+                }
+                if (reqData.isPost) {
+                    optionPhone['isPost'] = reqData.isPost
                 }
                 Phone.updateAsync(matchPhone, optionPhone).then(function (result) {
                     if (result.nModified = 1) {
