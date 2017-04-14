@@ -74,7 +74,7 @@ module.exports = function (app) {
                     + matchInternal[reqData.internal] + matchMaintenance[reqData.maintenance] + matchRAM[reqData.RAM]
                     + matchScreen[reqData.screen] + matchWarranty[reqData.warranty];
 
-                totalPrice = basePrice * (1 + Number(extra));
+                totalPrice = Math.ceil(basePrice * (1 + extra)) ;
 
                 return Phone.createAsync({
                     model: reqData.model+reqData.modelName, // 手机型号
@@ -87,7 +87,7 @@ module.exports = function (app) {
                     border: reqData.border, //边框情况
                     screen: reqData.screen, // 屏幕情况
                     maintenance: reqData.maintenance, //维修情况
-                    failure: reqData.other, //故障情况
+                    failure: reqData.failure, //故障情况
                     imputedPrice: totalPrice, //估算价格
                     addUser: user._id
                 });

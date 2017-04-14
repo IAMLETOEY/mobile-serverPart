@@ -55,7 +55,7 @@ module.exports = function (app) {
                 delFlag: 2
             };
             var optionPhone = {};
-            if(reqData.isCertified){
+            if (reqData.isCertified) {
                 optionPhone = {
                     populate: {
                         path: 'addUser',
@@ -67,15 +67,15 @@ module.exports = function (app) {
             }
             Phone.findOneAsync(matchPhone, '', optionPhone).then(function (phone) {
                 if (phone) {
-                    if(reqData.modifyQuery){
+                    if (reqData.modifyQuery) {
                         var resData = {
                             code: 200,
                             msg: '查找成功',
                             data: phone
                         };
-                    } else{
+                    } else {
                         var _phone = phone._doc;
-                        _phone.internal = matchInternal[''+phone.internal]; // 存储容量
+                        _phone.internal = matchInternal['' + phone.internal]; // 存储容量
                         _phone.net = matchNet[phone.net]; //网络制式
                         _phone.buyChannel = matchChannel[phone.buyChannel]; //购买渠道
                         _phone.warranty = matchWarranty[phone.warranty]; //保修情况, 1处于保修期 2.超过保修期

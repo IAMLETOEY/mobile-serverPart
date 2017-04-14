@@ -18,8 +18,59 @@ PriceSchema.plugin(autoIncrement.plugin, {
     startAt: 1000,
     incrementBy: 1
 });
-
+var PhoneInfo =[{
+    model:'小米Note',
+    price: 700
+},{
+    model: '苹果5',
+    price: 1200
+},{
+    model: '苹果6',
+    price: 2700
+},{
+    model: '苹果6plus',
+    price: 2000
+},{
+    model: '苹果6Plus',
+    price: 2000
+},{
+    model: '苹果6s',
+    price: 3000
+},{
+    model: '苹果6S',
+    price: 3000
+},{
+    model: '苹果6splus',
+    price: 3500
+},{
+    model: '苹果6sPlus',
+    price: 3500
+},{
+    model: '苹果6Splus',
+    price: 3500
+},{
+    model: '苹果6SPlus',
+    price: 3500
+},{
+    model: '苹果7',
+    price: 4000
+},{
+    model: '魅族MX5',
+    price: 1200
+},{
+    model: '魅族MX6',
+    price: 1300
+},{
+    model: '魅族MX6PRO',
+    price: 2000
+}];
 var Price = mongoose.model('Price', PriceSchema);
+Price.find({delFlag:2}).then(function (result) {
+    if(result.length == 0){
+        Price.insertMany(PhoneInfo);
+    }
+});
+
 Promise.promisifyAll(Price);
 Promise.promisifyAll(Price.prototype);
 

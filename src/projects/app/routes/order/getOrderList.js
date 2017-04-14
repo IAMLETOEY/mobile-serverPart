@@ -14,7 +14,7 @@ module.exports = function (app) {
                 return;
             }
             var matchOrder = {
-                delFlag:2
+                delFlag: 2
             };
             var optionOrder = {
                 populate: {
@@ -30,7 +30,6 @@ module.exports = function (app) {
             if (reqData.mySell) {
                 matchOrder['seller'] = user._id
             }
-
             Order.findAsync(matchOrder, '', optionOrder).then(function (result) {
                 var resData = {
                     code: 200,

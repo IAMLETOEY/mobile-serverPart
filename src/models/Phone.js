@@ -15,11 +15,11 @@ var PhoneSchema = mongoose.Schema({
     failure: {type: String, default: ''}, //故障情况
     isCertified: {type: Number, default: 0}, //认证情况  0.未认证1.已认证
     imputedPrice: {type: Number, default: 0}, //估算价格
-    sellerPrice: {type: Number, default:0},//卖家报价
-    isPost: {type: Number, default:0}, // 是否已经发布 0.未发布 1.已经发布
+    sellerPrice: {type: Number, default: 0},//卖家报价
+    isPost: {type: Number, default: 0}, // 是否已经发布 0.未发布 1.已经发布
     isPurchased: {type: Number, default: 0}, // 是否已被购买 0.未被购买 1.已被购买
     photo: {type: String, default: ''},//手机图片
-    requireCertified:{type:Number, default: 0}, //等待认证状态 0.默认1.等待认证
+    requireCertified: {type: Number, default: 0}, //等待认证状态 0.默认1.等待认证
 
     addDate: {type: Date, default: Date.now}, // 创建时间
     updDate: {type: Date, default: Date.now}, // 更新时间

@@ -20,20 +20,13 @@ module.exports = function (app) {
             };
             var optionOrder = {};
             if (reqData.isSure) {
-                optionOrder['$set'] = {
-                    status: 2
-                }
+                optionOrder['status'] = 2
             }
             if (reqData.isUpdate) {
-                optionOrder['$set'] = {
-                    status: 1,
-                    transport: reqData.transport
-                }
+                optionOrder['status'] = 1;
+                optionOrder['transport'] = parseInt(reqData.transport);
             }
-            console.log(matchOrder);
-            console.log(optionOrder);
-            Order.updateAsync(matchOrder, optionOrder)
-                .then(function (result) {
+            Order.updateAsync(matchOrder, optionOrder).then(function (result) {
                     var resData = {
                         code: 200,
                         msg: '修改成功!',

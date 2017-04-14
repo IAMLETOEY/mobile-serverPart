@@ -26,6 +26,9 @@ module.exports = function (app) {
             if(reqData.isCertified){
                 matchPhone['requireCertified'] = 1
             }
+            if(reqData.isMainPage){
+                matchPhone['isPurchased'] = 0
+            }
             Phone.findAsync(matchPhone, '', optionPhone).then(function (result) {
                 if (result.length > 0) {
                     var resData = {
