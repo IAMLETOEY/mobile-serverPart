@@ -74,7 +74,9 @@ module.exports = function (app) {
                     + matchInternal[reqData.internal] + matchMaintenance[reqData.maintenance] + matchRAM[reqData.RAM]
                     + matchScreen[reqData.screen] + matchWarranty[reqData.warranty];
 
-                totalPrice = Math.ceil(basePrice * (1 + extra)) ;
+                totalPrice = Math.ceil(basePrice * (1 + extra));
+                console.log('totalPrice',totalPrice);
+                console.log('extra',extra);
 
                 return Phone.createAsync({
                     model: reqData.model+reqData.modelName, // 手机型号
@@ -96,10 +98,11 @@ module.exports = function (app) {
                     code: 200,
                     msg: '估价成功',
                     data: {
-                        price: parseInt(totalPrice),
+                        price: totalPrice,
                         phoneID: phone._id
                     }
                 };
+                console.log(resData);
                 res.send(resData, resultCode.type, 200)
             }).catch(function (err) {
                 console.log(err);
