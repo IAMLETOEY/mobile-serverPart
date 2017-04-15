@@ -39,6 +39,7 @@ module.exports = function (app) {
                     '4': 0.1
                 };
                 var matchRAM = {
+                    '1': -0.03,
                     '2': -0.02,
                     '3': 0.03,
                     '4': 0.04,
@@ -75,8 +76,6 @@ module.exports = function (app) {
                     + matchScreen[reqData.screen] + matchWarranty[reqData.warranty];
 
                 totalPrice = Math.ceil(basePrice * (1 + extra));
-                console.log('totalPrice',totalPrice);
-                console.log('extra',extra);
 
                 return Phone.createAsync({
                     model: reqData.model+reqData.modelName, // 手机型号
@@ -102,7 +101,6 @@ module.exports = function (app) {
                         phoneID: phone._id
                     }
                 };
-                console.log(resData);
                 res.send(resData, resultCode.type, 200)
             }).catch(function (err) {
                 console.log(err);

@@ -34,7 +34,6 @@ module.exports = function (app) {
                 addUser: user._id,
                 photo: newPath
             }).then(function (result) {
-                console.log(result);
                 res.send(resultCode['200'], resultCode.type, 200);
             }).catch(function (err) {
                 console.log('/phone/add err:---->', err);
